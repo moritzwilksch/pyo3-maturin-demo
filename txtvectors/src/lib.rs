@@ -11,7 +11,7 @@ fn multiply(x: f64, y: f64) -> PyResult<f64> {
 fn frequency_encode(s: String) -> PyResult<HashMap<String, i32>> {
     // returns hash map { word: frequency }
     let mut result = HashMap::new();
-    s.split(" ")
+    s.split(' ')
         .for_each(|w| *result.entry(w.to_string()).or_insert(0) += 1);
     Ok(result)
 }
@@ -20,10 +20,10 @@ fn frequency_encode(s: String) -> PyResult<HashMap<String, i32>> {
 fn batch_frequency_encode(batch: Vec<String>) -> PyResult<HashMap<String, i32>> {
     let mut result: HashMap<String, i32> = HashMap::new();
     for s in batch.iter() {
-        s.split(" ")
+        s.split(' ')
             .for_each(|w| *result.entry(w.to_string()).or_insert(0) += 1);
     }
-    return Ok(result);
+    Ok(result)
 }
 
 /// A Python module implemented in Rust.
